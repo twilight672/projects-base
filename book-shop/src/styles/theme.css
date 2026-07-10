@@ -1,0 +1,276 @@
+/**
+ * 🌟 主题样式文件
+ *
+ * 这里定义了整个项目的设计规范，包括：
+ * - 颜色变量：主色、背景色、文字色、功能色等
+ * - 阴影变量：不同层级的阴影效果
+ * - 圆角变量：统一的圆角大小
+ * - 过渡变量：动画时长
+ * - 通用组件样式：卡片、按钮、输入框、标签等
+ *
+ * 使用方式：在 main.js 中引入即可
+ * import './styles/theme.css'
+ */
+
+:root {
+  /* ==================== 主色调 ==================== */
+  /* 主色用蓝色系，给人专业、可信赖的感觉 */
+
+  --primary-color: #4f8cf7;      /* 主色：用于按钮、链接、强调元素 */
+  --primary-light: #7aacff;      /* 主色浅色：用于悬停状态 */
+  --primary-dark: #3a6fd9;       /* 主色深色：用于按下状态 */
+  --primary-gradient: linear-gradient(135deg, #4f8cf7 0%, #7c6df0 100%);  /* 主色渐变：用于按钮背景 */
+
+  /* 次要色用橙色系，用于点缀和强调重要操作 */
+  --secondary-color: #f6a85b;    /* 次要色：用于次要按钮、标签等 */
+  --secondary-light: #fbcb8a;    /* 次要色浅色 */
+
+  /* ==================== 背景色 ==================== */
+
+  --bg-page: #f5f7fb;           /* 页面背景：淡灰色，不刺眼 */
+  --bg-card: #ffffff;           /* 卡片背景：纯白色 */
+  --bg-card-hover: #f8faff;     /* 卡片悬停背景：带一点点蓝 */
+  --bg-input: #f0f2f7;          /* 输入框背景：比页面背景稍深 */
+
+  /* ==================== 文字颜色 ==================== */
+
+  --text-primary: #1a2332;       /* 主要文字：深色，用于正文 */
+  --text-secondary: #4a5568;    /* 次要文字：中灰，用于副标题、说明文字 */
+  --text-muted: #8a94a6;        /* 弱化文字：浅灰，用于占位符、提示文字 */
+  --text-inverse: #ffffff;      /* 反色文字：白色，用于深色背景上的文字 */
+
+  /* ==================== 功能色 ==================== */
+  /* 这些颜色有特定的语义，不要随意混用 */
+
+  --success-color: #36b37e;     /* 成功：绿色，用于成功提示、完成状态 */
+  --success-bg: #e8f5ee;        /* 成功背景：浅绿色背景 */
+  --danger-color: #ff6b6b;      /* 危险：红色，用于错误提示、删除按钮 */
+  --danger-bg: #fde8e8;         /* 危险背景：浅红色背景 */
+  --warning-color: #f9a825;     /* 警告：黄色，用于警告提示 */
+  --warning-bg: #fef3e0;        /* 警告背景：浅黄色背景 */
+  --info-color: #4f8cf7;        /* 信息：蓝色，用于普通提示 */
+  --info-bg: #e8effd;           /* 信息背景：浅蓝色背景 */
+
+  /* ==================== 边框 ==================== */
+
+  --border-color: #e8ecf3;      /* 默认边框颜色：浅灰色 */
+  --border-focus: #4f8cf7;      /* 聚焦边框颜色：主题蓝色 */
+
+  /* ==================== 阴影 ==================== */
+  /* 从 xs 到 xl 逐渐加深，用于不同层级的卡片和弹窗 */
+
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.04);    /* 极小阴影：几乎看不见 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);     /* 小阴影：卡片默认状态 */
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);   /* 中等阴影：卡片悬停状态 */
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);   /* 大阴影：弹窗、下拉菜单 */
+  --shadow-xl: 0 12px 60px rgba(0, 0, 0, 0.12);  /* 超大阴影：模态框 */
+
+  /* ==================== 圆角 ==================== */
+
+  --radius-sm: 8px;     /* 小圆角：输入框、小按钮 */
+  --radius-md: 12px;    /* 中圆角：卡片 */
+  --radius-lg: 16px;    /* 大圆角：大卡片、弹窗 */
+  --radius-xl: 20px;    /* 超大圆角：特殊容器 */
+  --radius-full: 9999px; /* 全圆角：胶囊按钮、标签 */
+
+  /* ==================== 过渡动画时长 ==================== */
+
+  --transition-fast: 0.15s ease;    /* 快速：微交互，如按钮悬停 */
+  --transition-normal: 0.25s ease;  /* 正常：大多数过渡效果 */
+  --transition-slow: 0.4s ease;    /* 慢速：大型动画 */
+}
+
+/* ==================== 全局重置 ==================== */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== 滚动条样式 ==================== */
+/* 自定义滚动条，让它更好看 */
+
+::-webkit-scrollbar {
+  width: 5px;   /* 垂直滚动条宽度 */
+  height: 5px;  /* 水平滚动条高度 */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);  /* 滚动条轨道背景 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d7e6;   /* 滚动条滑块颜色 */
+  border-radius: 4px;   /* 滑块圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0baca;  /* 悬停时滑块变深 */
+}
+
+/* ==================== 卡片通用样式 ==================== */
+/* 用于内容容器，如商品卡片、信息面板等 */
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);  /* 悬停时阴影加深，产生浮起效果 */
+}
+
+/* ==================== 按钮通用样式 ==================== */
+/* 基础按钮类，配合 .btn-primary、.btn-outline 等使用 */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;          /* 图标和文字之间的间距 */
+  padding: 10px 24px;
+  border-radius: var(--radius-full);  /* 胶囊形状 */
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  text-decoration: none;
+}
+
+/* 主要按钮：渐变蓝色背景，带阴影 */
+.btn-primary {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 14px rgba(79, 140, 247, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);  /* 悬停时上移 2px */
+  box-shadow: 0 8px 28px rgba(79, 140, 247, 0.35);  /* 阴影加深 */
+}
+
+/* 边框按钮：透明背景 + 边框 */
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border-color);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: var(--info-bg);
+}
+
+/* 成功按钮：绿色背景 */
+.btn-success {
+  background: var(--success-color);
+  color: white;
+  box-shadow: 0 4px 14px rgba(54, 179, 126, 0.3);
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(54, 179, 126, 0.35);
+}
+
+/* 危险按钮：红色背景，用于删除等危险操作 */
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+  box-shadow: 0 4px 14px rgba(255, 107, 107, 0.3);
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 107, 107, 0.35);
+}
+
+/* ==================== 输入框通用样式 ==================== */
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-input);
+  border: 1.5px solid transparent;  /* 默认透明边框 */
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all var(--transition-normal);
+  outline: none;
+  font-family: inherit;
+}
+
+/* 聚焦状态：显示蓝色边框 + 外发光 */
+.input:focus {
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(79, 140, 247, 0.10);
+}
+
+/* 占位符文字 */
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+/* 错误状态：红色边框 + 浅红背景 */
+.input.error {
+  border-color: var(--danger-color);
+  background: var(--danger-bg);
+}
+
+/* ==================== 标签样式 ==================== */
+/* 用于状态标签、分类标签等 */
+
+.tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 各种颜色的标签 */
+.tag-primary { background: var(--info-bg); color: var(--primary-color); }    /* 蓝色标签 */
+.tag-success { background: var(--success-bg); color: var(--success-color); } /* 绿色标签 */
+.tag-danger { background: var(--danger-bg); color: var(--danger-color); }    /* 红色标签 */
+.tag-warning { background: var(--warning-bg); color: var(--warning-color); } /* 黄色标签 */
+
+/* ==================== 工具类 ==================== */
+
+/* 渐变文字效果 */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 文字颜色工具类 */
+.text-muted { color: var(--text-muted); }      /* 弱化文字 */
+.text-secondary { color: var(--text-secondary); }  /* 次要文字 */
+
+/* 淡入动画：元素从下方淡入 */
+.fade-in {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 缩放淡入动画 */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}

@@ -1,0 +1,237 @@
+/**
+ * 全局样式文件
+ *
+ * 这里放的是整个项目通用的样式，包括：
+ * - 基础重置：清除浏览器默认样式
+ * - 布局辅助类：常用的间距、对齐等工具类
+ * - 表单样式：输入框、表单组等
+ * - 背景装饰：粒子效果、网格背景等视觉增强
+ * - 过渡动画：Vue 路由切换时的动画效果
+ *
+ * 主题变量（颜色、阴影、圆角等）请看 ./styles/theme.css
+ */
+
+/* ==================== 基础重置 ==================== */
+
+/* 所有元素统一设置盒模型为 border-box，这样设置宽高时更直观 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 页面根元素：设置默认字体和字号 */
+html, body {
+  height: 100%;
+  /* 使用系统默认字体栈，在各平台上都能显示得比较好看 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  /* 字体平滑渲染，在 macOS 上效果更明显 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Vue 应用的挂载点，确保至少占满整个视口高度 */
+#app {
+  min-height: 100%;
+}
+
+/* ==================== 布局辅助类 ==================== */
+
+/* 文本对齐：快速调整文字对齐方式 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* 外边距工具类：mt = margin-top，mb = margin-bottom */
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+/* ==================== 表单样式 ==================== */
+/* 这部分是为了兼容旧组件保留的，新组件建议用 theme.css 里的 .input 类 */
+
+/* 表单组：一个 label + 输入框的组合单元 */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* 表单标签：放在输入框上方的说明文字 */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* 表单控件：通用的输入框样式 */
+.form-control {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--bg-input);
+  border: 1.5px solid transparent;  /* 默认透明边框，聚焦时显示颜色 */
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: all var(--transition-normal);
+  outline: none;
+  font-family: inherit;
+}
+
+/* 输入框聚焦状态：高亮边框 + 柔和阴影 */
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(79, 140, 247, 0.10);
+  background: white;
+}
+
+/* 占位符文字颜色 */
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+/* 错误状态：输入验证失败时显示红色边框 */
+.form-control.error {
+  border-color: var(--danger-color);
+}
+
+/* 错误提示文字：显示在输入框下方的红色小字 */
+.form-error {
+  color: var(--danger-color);
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ==================== 链接样式 ==================== */
+
+/* 通用链接样式：蓝色文字，悬停时变浅并显示下划线 */
+.link {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+.link:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+/* ==================== 背景装饰效果 ==================== */
+
+/* 粒子效果背景：一个缓慢旋转的渐变光晕 */
+.bg-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;  /* 放到最底层，不遮挡内容 */
+  pointer-events: none;  /* 不响应鼠标事件 */
+}
+
+/* 用伪元素创建旋转的渐变光晕 */
+.bg-particles::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(79, 140, 247, 0.06) 0%, transparent 70%);
+  animation: rotate 60s linear infinite;  /* 60秒转一圈 */
+}
+
+/* 旋转动画定义 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 网格背景：淡淡的网格线，增加科技感 */
+.bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 用线性渐变画出网格线 */
+  background-image:
+    linear-gradient(rgba(79, 140, 247, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 140, 247, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;  /* 网格大小 50x50 */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 发光效果：给元素添加蓝色光晕 */
+.glow {
+  box-shadow: 0 4px 15px rgba(79, 140, 247, 0.25);
+}
+
+/* 文字发光：给文字添加蓝色光晕 */
+.glow-text {
+  text-shadow: 0 2px 8px rgba(79, 140, 247, 0.25);
+}
+
+/* 脉冲动画：光晕忽明忽暗的效果 */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(79, 140, 247, 0.25);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(79, 140, 247, 0.4);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ==================== 页面过渡动画 ==================== */
+/* 这是 Vue 的 transition 组件用的类名，用于路由切换时的淡入淡出效果 */
+
+/* 进入和离开时的过渡效果 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 进入开始状态：透明 + 向下偏移 20px */
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* 离开结束状态：透明 + 向上偏移 20px */
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}

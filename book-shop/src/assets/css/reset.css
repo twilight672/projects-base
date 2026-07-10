@@ -1,0 +1,78 @@
+/**
+ * 基础重置样式
+ *
+ * 这个文件负责"抹平"浏览器之间的默认样式差异。
+ * 不同浏览器对元素的默认样式不一样，比如列表的圆点、链接的颜色等，
+ * 这里统一重置掉，让我们的样式在所有浏览器上表现一致。
+ *
+ * 主题变量（颜色、阴影、圆角等）请看 ./styles/theme.css
+ */
+
+/* ==================== 全局重置 ==================== */
+
+/* 清除所有元素的默认内外边距，统一使用 border-box 盒模型 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 页面主体：设置默认字体、字号和文字颜色 */
+body {
+  /* 系统字体栈：优先使用系统原生字体，显示效果好且加载快 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  /* 字体平滑渲染，macOS 上效果明显 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== 列表样式 ==================== */
+
+/* 去掉列表的圆点和序号，大多数场景下我们不需要它们 */
+ul, li {
+  list-style: none;
+}
+
+/* ==================== 链接样式 ==================== */
+
+/* 链接默认去掉下划线，颜色继承父元素，悬停时变为主题色 */
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color var(--transition-normal);
+}
+
+/* 鼠标悬停时链接变蓝 */
+a:hover {
+  color: var(--primary-color);
+}
+
+/* ==================== 图片样式 ==================== */
+
+/* 图片默认去掉边框，底部对齐，且不超过容器宽度 */
+img {
+  border: none;
+  vertical-align: middle;  /* 消除图片底部的空白间隙 */
+  max-width: 100%;  /* 响应式：图片宽度不超过父容器 */
+}
+
+/* ==================== 按钮样式 ==================== */
+
+/* 按钮重置：去掉默认样式，方便我们自定义 */
+button {
+  cursor: pointer;  /* 鼠标变成手型 */
+  outline: none;    /* 去掉聚焦时的轮廓线 */
+  border: none;     /* 去掉默认边框 */
+  background: none; /* 去掉默认背景 */
+  font-family: inherit;  /* 继承父元素的字体 */
+}
+
+/* ==================== 表单元素 ==================== */
+
+/* 输入框、文本域、下拉框继承父元素的字体和字号 */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
