@@ -1,0 +1,469 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+/* 页面基础样式 */
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* 容器样式 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 登录页面样式 */
+.login-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login-box h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.form-container {
+    margin-bottom: 20px;
+}
+
+.form-container h2 {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* 输入框样式 */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;/* 聚焦时边框变色 */
+}
+/* 按钮基础样式 */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;/* 悬停时深色 */
+}
+
+.form-container p {
+    margin-top: 15px;
+    color: #666;
+}
+
+.form-container p span {
+    color: #4CAF50;
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* 游客入口样式 */
+.guest-entry {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.guest-entry p {
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.guest-entry button {
+    background-color: #2196F3;/* 游客按钮蓝色 */
+}
+
+.guest-entry button:hover {
+    background-color: #0b7dda;
+}
+
+/* 排行榜页面样式 */
+.rank-header {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    width: auto;
+    padding: 10px 20px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+.rank-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.rank-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* 排行榜表格样式 */
+.rank-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rank-table th,
+.rank-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.rank-table th {
+    background-color: #f9f9f9;
+    color: #666;
+}
+
+.rank-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.current-user {
+    font-weight: bold;
+    background-color: #e8f5e9 !important;
+}
+/* 房间按钮样式 */
+.room-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.room-buttons button {
+    width: 150px;
+    padding: 15px;
+}
+
+.create-room-btn {
+    background-color: #4CAF50;/* 创建房间绿色 */
+}
+}
+
+.join-room-btn {
+    background-color: #2196F3;/* 加入房间蓝色 */
+}
+
+/* 游戏页面样式 */
+.game-header {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    gap: 30px;
+}
+
+/* 棋盘样式 */
+.board-container {
+    background-color: #DEB887;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#chessboard {
+    position: relative;
+    width: 560px;
+    height: 560px;
+    background-color: #DEB887;
+     /* 棋盘网格线 */
+    background-image: linear-gradient(to right, #000 1px, transparent 1px),
+                     linear-gradient(to bottom, #000 1px, transparent 1px);
+    background-size: 40px 40px;
+    border: 2px solid #8B4513;
+}
+/* 棋盘星位点 */
+.star-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+/* 棋子样式 */
+.stone {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+/* 玩家信息中的棋子样式 */
+.player .stone {
+    position: static;
+    width: 20px;
+    height: 20px;
+    transform: none;
+    cursor: default;
+}
+/* 黑白棋子颜色 */
+.black-stone {
+    background-color: #000;
+}
+
+.white-stone {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+/* 幽灵棋子(预览) */
+.ghost-stone {
+    opacity: 0.5;
+}
+
+/* 游戏控制区域 */
+.game-info {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.player-info {
+    margin-bottom: 20px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    gap: 10px;
+}
+
+.current-player {
+    background-color: #e8f5e9;
+    border: 2px solid #4CAF50;
+}
+
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.game-controls button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.game-controls button:hover {
+    background-color: #e0e0e0;
+}
+/* 投降按钮 */
+.surrender-btn {
+    background-color: #f44336 !important;
+    color: white !important;
+}
+
+.surrender-btn:hover {
+    background-color: #d32f2f !important;
+}
+/* 等待房间样式 */
+.waiting-room {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.waiting-room h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#waiting-timer {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #ff9800;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column;
+    }
+    
+    #chessboard {
+        width: 360px;
+        height: 360px;
+        background-size: 30px 30px;
+    }
+    
+    .stone {
+        width: 26px;
+        height: 26px;
+        margin-left: -13px;
+        margin-top: -13px;
+    }
+    
+    .game-info {
+        width: 100%;
+    }
+}
+
+/* 提示框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);/* 半透明背景 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.accept-btn {
+    background-color: #4CAF50;
+}
+
+.reject-btn {
+    background-color: #f44336;
+}
+
+/* 胜利提示样式 */
+.victory-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+    color: white;
+}
+
+.victory-text {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.victory-stats {
+    margin-bottom: 30px;
+}
+
+/* 棋子选择样式 */
+.piece-selection {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.piece-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s, border 0.3s;
+}
+
+.piece-option:hover {
+    transform: scale(1.1);/* 悬停放大效果 */
+}
+
+.piece-selected {
+    border: 3px solid #4CAF50; /* 选中状态边框 */
+}
+
+.black-option {
+    background-color: #000;
+}
+
+.white-option {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
