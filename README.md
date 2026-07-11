@@ -1,90 +1,102 @@
-# 项目集合仓库
+﻿# 民生诉求反馈平台
 
-本仓库包含多个独立的管理系统与应用项目，涵盖 Java Web、PHP、前端等多种技术栈，适合学习参考和二次开发。
+正式系统雏形，包含公众投诉反馈、进度查询、市县两级后台、附件上传、办理闭环、统计导出和移动端扫码访问。
 
-## 项目概览
+## 环境要求
 
-| 项目名称 | 技术栈 | 类型 | 简介 |
-| :--- | :--- | :--- | :--- |
-| 学生图书管理系统 | Java + MySQL | 控制台应用 | 面向学生的图书借阅管理系统 |
-| 奶茶管理系统 | Java Web + MySQL | Web应用 | 奶茶店产品、订单、客户、员工管理 |
-| 小型超市管理系统 | Java Web + MySQL | Web应用 | 商品管理、购物车、订单处理、库存监控 |
-| 五子棋游戏 | PHP + JavaScript | Web应用 | 网页版五子棋，支持AI对战、积分排行 |
-| 书店管理系统 | Vue.js | 前端项目 | 基于Vue的书店管理系统 |
+- **Node.js**: >= 18.0.0（推荐 20.x 或 22.x）
+- **npm**: >= 8.0.0
 
----
+> **注意**：如果系统默认 Node.js 版本低于 18，请先切换到支持的版本后再运行。
 
-## 学生图书管理系统
+## 快速启动
 
-基于 Java + MySQL 的控制台版图书管理系统，支持学生登录、浏览图书、借阅与归还功能。
+Windows 下推荐直接双击：
 
-**技术栈**：Java + MySQL + DAO 分层设计
-
-**运行方式**：
-```bash
-javac -encoding UTF-8 -cp "lib/mysql-connector-j-9.3.0.jar" -d out src/com/caijing/test/*.java
-java -cp "out;lib/mysql-connector-j-9.3.0.jar" com.caijing.test.Main
+```text
+启动正式服务.bat
 ```
 
----
+启动后访问：
 
-## 奶茶管理系统
-
-基于 Java Web 开发的奶茶店管理系统，实现产品、订单、客户、员工和类别管理功能。
-
-**技术栈**：Java 17 + Servlet + JSP + MySQL + C3P0
-
-**运行方式**：
-```bash
-mvn clean package
+```text
+http://127.0.0.1:3000
 ```
 
----
+## 技术栈
 
-## 小型超市管理系统
+| 模块 | 技术 | 版本 |
+|------|------|------|
+| 前端框架 | React | 18.x |
+| 前端构建 | Vite | 4.5.x |
+| 编程语言 | TypeScript | 5.9.x |
+| 图标库 | lucide-react | 0.468.x |
+| 后端框架 | Express | 4.21.x |
+| 数据库 | sql.js (SQLite) | 1.14.x |
+| 文件上传 | multer | 2.2.x |
+| 测试工具 | Playwright | 1.61.x |
 
-基于 Java Web（JSP + Servlet）的中小型超市管理系统，涵盖商品管理、购物车、订单处理、库存监控。
+## 常用命令
 
-**技术栈**：Java Servlet + JSP + MySQL + Bootstrap + Layui
-
----
-
-## 五子棋游戏
-
-基于 PHP 和原生 JavaScript 的网页版五子棋游戏，支持用户注册登录、AI 对战、积分排行榜。
-
-**技术栈**：PHP + HTML5 + CSS3 + JavaScript
-
-**运行方式**：
 ```bash
-cd goban-game
-php -S localhost:8000
+npm install
+npm run dev       # 开发模式（前后端同时启动）
+npm run check     # 类型检查 + 构建 + 冒烟测试
+npm run build     # 生产构建
+npm run start     # 启动正式服务
+npm run test:e2e  # 端到端测试
 ```
 
----
+## 默认账号
 
-## 书店管理系统
+| 角色 | 账号 | 密码 | 说明 |
+|------|------|------|------|
+| 市级管理员 | `city` | `123456` | 查看全市统计、督办 |
+| 东城区办理员 | `county-east` | `123456` | 办理东城区事项 |
+| 西城区办理员 | `county-west` | `123456` | 办理西城区事项 |
 
-基于 Vue.js 开发的书店管理系统。
+## 目录说明
 
-**技术栈**：Vue.js + Vue CLI
-
-**运行方式**：
-```bash
-npm install && npm run serve
+```
+├── client/          # 前端源码
+│   ├── src/         # React 组件
+│   ├── index.html   # 入口 HTML
+│   ├── vite.config.ts
+│   └── tsconfig.json
+├── server/          # 后端源码
+│   ├── index.ts     # 服务入口
+│   ├── auth.ts      # 认证模块
+│   ├── db.ts        # 数据库操作
+│   ├── types.ts     # 类型定义
+│   └── uploads.ts   # 文件上传
+├── data/            # 数据库目录（保留真实数据）
+│   └── complaints.sqlite
+├── uploads/         # 附件上传目录（保留真实附件）
+├── docs/            # 技术文档和部署教程
+├── dist/            # 生产构建产物
+└── tests/           # 端到端测试
 ```
 
----
+## 核心功能
 
-## 联系我
+1. **诉求提交**：支持匿名/实名提交，可上传最多5个附件
+2. **进度查询**：凭编号查询办理状态，支持补充材料和满意度评价
+3. **管理后台**：分级权限管理，市级总览督办，县级办理工单
+4. **数据统计**：按状态、县区统计诉求数量
+5. **数据导出**：支持导出 CSV 格式
+6. **响应式设计**：自适应桌面端和移动端，自动生成访问二维码
 
-如果你对某个项目感兴趣，或有合作机会，欢迎联系我！
+## 运行流程
 
-GitHub: [twillight672](https://github.com/twillight672)
-邮箱: aski672@foxmail.com
+```
+1. npm install          # 安装依赖
+2. npm run build        # 构建项目
+3. npm run start        # 启动服务
+4. 访问 http://127.0.0.1:3000
+```
 
----
+## 注意事项
 
-## 许可证
-
-MIT License
+- 数据库文件存储在 `data/complaints.sqlite`，首次启动会自动初始化表结构和演示数据
+- 附件上传至 `uploads/` 目录，单文件最大 10MB
+- 开发模式使用 `npm run dev`，前端热更新，后端自动重启
